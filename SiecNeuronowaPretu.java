@@ -38,7 +38,7 @@ public class SiecNeuronowaPretu implements SiecNeuronowa
 		System.out.println("Wagi neuronu wyjœciowego");
 		for(int i = 0; i < m+1; ++i)
 		{
-			System.out.print(wagaNeuronuWyjsciowego[i]);
+			System.out.print(wagaNeuronuWyjsciowego[i] + " ");
 		}
 	}
 

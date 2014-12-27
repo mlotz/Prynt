@@ -3,7 +3,7 @@ public class Program
 {
 	public static void main(String[] args) 
 	{
-		System.out.println("Witaj swiecie!");
-		System.out.println("Ciekawe, czy pokazuje zmiany");
+		SiecNeuronowaPretu pret = new SiecNeuronowaPretu(2, 4);
+		pret.pokazWagi();
 	}
 }
