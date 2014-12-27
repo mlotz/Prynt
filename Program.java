@@ -7,5 +7,3 @@ public class Program
 		System.out.println("Ciekawe, czy pokazuje zmiany");
 	}
 }
-
-
