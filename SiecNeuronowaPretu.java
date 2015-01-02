@@ -18,16 +18,20 @@ public class SiecNeuronowaPretu implements SiecNeuronowa
 		wagaNeuronuWyjsciowego = new double[m+1];
 	}
 
-	@Override
-	public void przypiszWagi(double[][] waga) 
+	//@Override
+	public void przypiszWagi(double[][] waga , double[] waga_out) 
 	{
 		for(int i = 0; i < m; ++i)
 		{
 			neuron[i].przypiszWagi(waga[i]);
 		}
+		for (int i=0 ; i< m+1 ; ++i)
+		{
+			wagaNeuronuWyjsciowego[i] = waga_out [i];
+		}
 	}
 
-	@Override
+	//@Override
 	public void pokazWagi() 
 	{
 		for(int i = 0; i < m; ++i)
@@ -42,7 +46,7 @@ public class SiecNeuronowaPretu implements SiecNeuronowa
 		}
 	}
 
-	@Override
+	//@Override
 	public double obliczWartosc(double[] wejscie) 
 	{
 		double suma = 0;

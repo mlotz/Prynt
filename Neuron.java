@@ -2,6 +2,6 @@
 public interface Neuron 
 {
 	public void przypiszWagi(double[] waga);
-	public double[] pokazWagi();
-	public double obliczWyjscie();
+	public void pokazWagi();
+	public double obliczWyjscie(double[] wejscie);
 }
