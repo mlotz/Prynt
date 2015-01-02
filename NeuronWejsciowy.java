@@ -13,13 +13,13 @@ public class NeuronWejsciowy implements Neuron
 		waga = new double[n+1];
 	}
 	
-	@Override
+	//@Override
 	public void przypiszWagi(double[] noweWagi) 
 	{
-		waga = Arrays.copyOf(noweWagi, n);
+		waga = Arrays.copyOf(noweWagi, n+1); //!!
 	}
 
-	@Override
+	//@Override
 	public void pokazWagi() 
 	{
 		for(int i = 0; i < n+1; ++i)
@@ -27,7 +27,7 @@ public class NeuronWejsciowy implements Neuron
 		System.out.println();
 	}
 
-	@Override
+	//@Override
 	public double obliczWyjscie(double[] wejscie) 
 	{
 		double suma = 0, wyjscie;
@@ -39,6 +39,7 @@ public class NeuronWejsciowy implements Neuron
 		
 		suma += waga[n];
 		wyjscie = Math.exp(suma) / (1 + Math.exp(suma));
+		
 		
 		return wyjscie;
 	}

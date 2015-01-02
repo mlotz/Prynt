@@ -1,7 +1,7 @@
 
 public interface SiecNeuronowa 
 {
-	public void przypiszWagi(double[][] waga);
-	public double[][] pokazWagi();
-	public double obliczWartosc(); 
+	public void przypiszWagi(double[][] waga , double[] waga_out);
+	public void pokazWagi();
+	public double obliczWartosc(double[] wejscie); 
 }
