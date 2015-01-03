@@ -31,11 +31,14 @@ public class Pret
 			alfa = alfa + dt * omega + 0.5 * dt * dt * epsilon;
 			omega = omega + dt * epsilon;
 			
-			while(alfa > 180)
-				alfa = 360 - alfa;
 			if(alfa < 0)
 				alfa = -alfa;
+			while(alfa > 180)
+				alfa = 360 - alfa;
+			
 			sredniKat += alfa;
+			
+			aktualnyCzas += dt;
 		}
 		
 		sredniKat /= 1000;

@@ -7,6 +7,8 @@ public class Modul_ewolucyjny {
 	int kroki;
 	double c1,c2,sigma ;
 	long evolutionTimeLimit; //seconds
+	Pret pretSymulacyjny;
+	
 	public Modul_ewolucyjny(int iloscArgumentow, int iloscNeuronow)
 	{
 		wagi = new double [iloscNeuronow][iloscArgumentow+1];
@@ -19,6 +21,8 @@ public class Modul_ewolucyjny {
 		c2 = 1.2;
 		evolutionTimeLimit = 2; //seconds
 		sigma = 1.0; // ??? inne? dane ? losowe ?
+		
+		pretSymulacyjny = new Pret(iloscArgumentow, iloscNeuronow);
 	}
 	
 	
