@@ -75,7 +75,7 @@ public class Modul_ewolucyjny {
 				
 				// asumming: Pret subobject of Modul_ewolucyjny; SiecNeuronowaPretu subobject of Pret
 				
-				//if (Pret.symuluj(wagi,wagi_out)>Pret.symuluj(y_wagi,y_wagi_out))
+				//if (Pret.symuluj(n, m, wagi,wagi_out)>Pret.symuluj(y_wagi,y_wagi_out))
 				if (true)
 				{
 					//x
