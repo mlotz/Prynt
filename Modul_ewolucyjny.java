@@ -9,7 +9,7 @@ public class Modul_ewolucyjny {
 	int kroki;
 	double c1,c2,sigma ;
 	long evolutionTimeLimit; //seconds
-	Pret pretSymulacyjny;
+	public Pret pretSymulacyjny;
 	
 	public Modul_ewolucyjny(int iloscArgumentow, int iloscNeuronow)
 	{
@@ -101,6 +101,5 @@ public class Modul_ewolucyjny {
 			if (sigma < zad_sigma) return 0; //Success
 		}
 		return 1; //exceeded time limit;
-	}
-	
+	}	
 }

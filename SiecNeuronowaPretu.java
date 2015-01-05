@@ -27,7 +27,7 @@ public class SiecNeuronowaPretu implements SiecNeuronowa
 		}
 		for (int i=0 ; i< m+1 ; ++i)
 		{
-			wagaNeuronuWyjsciowego[i] = wagaWyjsciowego [i];
+			wagaNeuronuWyjsciowego[i] = wagaWyjsciowego[i];
 		}
 	}
 

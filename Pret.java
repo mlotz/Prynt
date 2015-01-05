@@ -2,7 +2,7 @@
 public class Pret 
 {
 	SiecNeuronowaPretu siecNeuronowa;
-	double[] alfy;
+	public double[] alfy;
 	
 	public Pret(int ileWejsc, int ileNeuronow)
 	{
@@ -17,7 +17,7 @@ public class Pret
 		double dt, aktualnyCzas;	// okres probkowania oraz aktualny czas symulacji
 		
 		sredniKat = 0.0;
-		alfa = 180;
+		alfa = 150;
 		omega = 0;
 		epsilon = 0;
 		dt = 0.01;
@@ -29,7 +29,7 @@ public class Pret
 		{
 			double[] dane = {alfa, omega};
 			
-			epsilon = Math.sin(alfa) + siecNeuronowa.obliczWartosc(dane);
+			epsilon = Math.sin(Math.toRadians(alfa));// + siecNeuronowa.obliczWartosc(dane);
 			
 			alfa = alfa + dt * omega + 0.5 * dt * dt * epsilon;
 			omega = omega + dt * epsilon;
@@ -39,7 +39,7 @@ public class Pret
 				alfa = 360 - alfa;
 			
 			sredniKat += Math.abs(alfa);
-			alfy[(int)aktualnyCzas * 100] = alfa;
+			alfy[(int)(aktualnyCzas * 100)] = alfa;
 			
 			aktualnyCzas += dt;
 		}

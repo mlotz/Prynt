@@ -37,7 +37,9 @@ public class Program extends JFrame
 		double[] input = new double[2];
 		input[0]= 1.0;
 		input[1]= 1.0;
+		//Pret pret = new Pret(4, 2);
 		double wynik = pret.obliczWartosc(input);
+		//System.out.println(alfy[1]);
 		System.out.print("\nWYNIK : " + wynik);
 	}
 }

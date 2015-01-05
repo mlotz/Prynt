@@ -27,8 +27,8 @@ public class GUI extends JPanel implements ActionListener
 		timer = new Timer(10, this);
 		timer.start();
 		///
-		pr = new Pret(2, 4);
 		Modul_ewolucyjny evo = new Modul_ewolucyjny(2,4);
+		pr = evo.pretSymulacyjny;
 		evo.losujWagi();
 		pr.symuluj(evo.wagi, evo.wagiWyjscie);
 	}
@@ -50,12 +50,12 @@ public class GUI extends JPanel implements ActionListener
 		Shape theCircle = new Ellipse2D.Double(centerX - radius, centerY - radius, 2.0 * radius, 2.0 * radius);
 		g2d.draw(theCircle);
 		double pX, pY,pR;
-		double alfa;
+		//double alfa;
 		//alfa = 180;
-		alfa = u;
+		//alfa = u;
 		double rads ;
-		rads = Math.toRadians(alfa);
-		//rads = pr.alfy[t];
+		//rads = Math.toRadians(alfa);
+		rads = Math.toRadians(pr.alfy[t]);
 		pR = 20;
 		pX = centerX + (int)(radius * Math.sin(rads));
 		pY = centerY - (int)(radius * Math.cos(rads));
@@ -70,9 +70,9 @@ public class GUI extends JPanel implements ActionListener
 	}
 	public void actionPerformed(ActionEvent e)
 	{
-		if (t>=1000) t=0; else t++;
-		if (u>=360) u=0; else u++;
-		//System.out.print(pr.alfy[t] + "\n");
+		if (t >= 999) t = 0; else t++;
+		if (u >= 360) u = 0; else u++;
+		System.out.print(t + " " + pr.alfy[t] + "\n");
 		repaint();
 	}
 }
