@@ -19,7 +19,7 @@ public class Program
 		evo.losujWagi();
 		//pret.przypiszWagi(wagi, wagi_out);
 		evo.ewoluuj(0.1);
-		pret.przypiszWagi(evo.podajWagi(), evo.podajWagiOut());
+		pret.przypiszWagi(evo.podajWagi(), evo.podajWagiWyjscia());
 		pret.pokazWagi();
 		double[] input = new double[2];
 		input[0]= 1.0;
