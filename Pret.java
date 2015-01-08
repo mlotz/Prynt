@@ -17,7 +17,7 @@ public class Pret
 		double dt, aktualnyCzas;	// okres probkowania oraz aktualny czas symulacji
 		
 		sredniKat = 0.0;
-		alfa = 150;
+		alfa = 330;
 		omega = 0;
 		epsilon = 0;
 		dt = 0.01;
@@ -29,7 +29,7 @@ public class Pret
 		{
 			double[] dane = {alfa, omega};
 			
-			epsilon = 10 * Math.sin(Math.toRadians(alfa));// + siecNeuronowa.obliczWartosc(dane);
+			epsilon = 100 * Math.sin(Math.toRadians(alfa)) + siecNeuronowa.obliczWartosc(dane);
 			
 			alfa = alfa + dt * omega + 0.5 * dt * dt * epsilon;
 			omega = omega + dt * epsilon;

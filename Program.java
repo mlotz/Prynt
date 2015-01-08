@@ -42,4 +42,5 @@ public class Program extends JFrame
 		//System.out.println(alfy[1]);
 		System.out.print("\nWYNIK : " + wynik);
 	}
+	
 }
