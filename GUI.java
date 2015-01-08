@@ -29,16 +29,19 @@ public class GUI extends JPanel implements ActionListener
 		setSize(900, 560);
 		t= 100;
 		u = 0;
+		evo = new Modul_ewolucyjny(2,4);
+		pr = evo.pretSymulacyjny;
+		evo.losujWagi();
+		wynik = pr.symuluj(evo.wagi, evo.wagiWyjscie);
+		evo.ewoluuj(1.1);
 		Runnable r1 = new watekEwolucyjny();
 		Thread th = new Thread(r1);
 		th.start();
 		timer = new Timer(10, this);
 		timer.start();
 		///
-		evo = new Modul_ewolucyjny(2,4);
-		pr = evo.pretSymulacyjny;
-		evo.losujWagi();
-		wynik = pr.symuluj(evo.wagi, evo.wagiWyjscie);
+		
+		
 	}
 	
 	
@@ -78,22 +81,19 @@ public class GUI extends JPanel implements ActionListener
 	}
 	public void actionPerformed(ActionEvent e)
 	{
-		if (t >= 999) {t = 0; System.out.println(wynik);} else t++;
+		if (t >= 999) {t = 0; System.out.println(pr.ostatniWynik);} else t++;
 		if (u >= 360) u = 0; else u++;
-		//System.out.print(t + " " + pr.alfy[t] + "\n");
+		System.out.print(t + " " + pr.alfy[t] + "\n");
 		repaint();
 	}
 	
 	private class watekEwolucyjny implements Runnable
-	{
-		Modul_ewolucyjny evo1;
-		
+	{	
 		public watekEwolucyjny (){
-			evo1 = GUI.evo;
 		}
 		
 		public void run (){
-			evo1.ewoluuj(0.5);
+			evo.ewoluuj(0.5);
 		}
 	}
 }

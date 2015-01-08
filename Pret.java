@@ -3,6 +3,7 @@ public class Pret
 {
 	SiecNeuronowaPretu siecNeuronowa;
 	public double[] alfy;
+	public double ostatniWynik;
 	
 	public Pret(int ileWejsc, int ileNeuronow)
 	{
@@ -45,6 +46,8 @@ public class Pret
 		}
 		
 		sredniKat /= 1000;
+		ostatniWynik = sredniKat;
+		
 		
 		return sredniKat;
 	}

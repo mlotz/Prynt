@@ -9,7 +9,7 @@ public class Modul_ewolucyjny {
 	int kroki;
 	double c1,c2,sigma ;
 	long evolutionTimeLimit; //seconds
-	public Pret pretSymulacyjny;
+	public Pret pretSymulacyjny, testowyPretSymulacyjny;
 	
 	public Modul_ewolucyjny(int iloscArgumentow, int iloscNeuronow)
 	{
@@ -25,6 +25,8 @@ public class Modul_ewolucyjny {
 		sigma = 1.0; // ??? inne? dane ? losowe ?
 		
 		pretSymulacyjny = new Pret(iloscArgumentow, iloscNeuronow);
+		testowyPretSymulacyjny = new Pret(iloscArgumentow, iloscNeuronow);
+		
 	}
 	
 	public void losujWagi()
@@ -63,12 +65,11 @@ public class Modul_ewolucyjny {
 		double ny = 0;
 		y_wagi = new double [m][n+1];
 		y_wagiWyjscie = new double[m+1];
-		
-		long start = System.currentTimeMillis();
-		long end = start + (evolutionTimeLimit)*1000; // 60 seconds * 1000 ms/sec
-		while (System.currentTimeMillis() < end)
+ 
+		while (true)
 		{
-		
+			pretSymulacyjny.siecNeuronowa.pokazWagi();
+			
 			for (int licznikKrokow = 0; licznikKrokow < kroki; ++licznikKrokow )
 			{
 				
@@ -78,28 +79,33 @@ public class Modul_ewolucyjny {
 					for (int j = 0; j<n+1 ; ++j)			
 						y_wagi[i][j]=wagi[i][j]+ sigma * gen.nextGaussian() ;
 				for (int j = 0; j<m+1 ; ++j)
-					y_wagiWyjscie[j]=wagiWyjscie[j] + sigma *  Math.random() * 2 - 1;
+					y_wagiWyjscie[j]=wagiWyjscie[j] + sigma *  gen.nextGaussian();
 				
 				// asumming: Pret subobject of Modul_ewolucyjny; SiecNeuronowaPretu subobject of Pret
 				
-				if (pretSymulacyjny.symuluj(wagi,wagiWyjscie) > pretSymulacyjny.symuluj(y_wagi,y_wagiWyjscie) )
+				if (pretSymulacyjny.symuluj(wagi,wagiWyjscie) > testowyPretSymulacyjny.symuluj(y_wagi,y_wagiWyjscie) )
 				{
 					++ny;
-					przypiszWagi(y_wagi,y_wagiWyjscie);
+					pretSymulacyjny.siecNeuronowa.przypiszWagi(y_wagi,y_wagiWyjscie);
+					przypiszWagi(y_wagi, y_wagiWyjscie);
 				}
 			}
 			fi = ny/kroki;
 			if (fi < (1/5))
 			{
 				sigma = c1 * sigma;
+				//System.out.println("fi < 1/5");
 			}
 			else if(fi > (1/5))
 			{
 				sigma = c2 * sigma;
+				//System.out.println("fi > 1/5");
 			}
 			
 			if (sigma < zad_sigma) return 0; //Success
+			
+			ny = 0;
+			System.out.println("\n\n\nSIGMA: " + sigma + "\n\n\n");
 		}
-		return 1; //exceeded time limit;
 	}	
 }
