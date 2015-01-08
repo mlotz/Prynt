@@ -33,7 +33,7 @@ public class GUI extends JPanel implements ActionListener
 		pr = evo.pretSymulacyjny;
 		evo.losujWagi();
 		wynik = pr.symuluj(evo.wagi, evo.wagiWyjscie);
-		evo.ewoluuj(1.1);
+		evo.ewoluuj(0.005);
 		Runnable r1 = new watekEwolucyjny();
 		Thread th = new Thread(r1);
 		th.start();
@@ -47,38 +47,48 @@ public class GUI extends JPanel implements ActionListener
 	
 	public void paint(Graphics g)
 	{
-		super.paint(g);
-		Graphics2D g2d = (Graphics2D)g;
-		g.setColor(Color.white);
-		g.setFont(new Font("Arial", Font.BOLD, 40));
-		g.fillRect(t, 1, 10, 10);
-		g2d.drawString("Obiekt 14 - Prent", 15, 40);
-		g.setFont(new Font("Arial", Font.BOLD, 10));
-		g2d.drawString("t:"+ t, t+20, 10);
-		int centerX,centerY,radius ;
-		centerX = centerY = 200;
-		radius = 100;
-		Shape theCircle = new Ellipse2D.Double(centerX - radius, centerY - radius, 2.0 * radius, 2.0 * radius);
-		g2d.draw(theCircle);
-		double pX, pY,pR;
-		//double alfa;
-		//alfa = 180;
-		//alfa = u;
-		double rads ;
-		//rads = Math.toRadians(alfa);
-		rads = Math.toRadians(pr.alfy[t]);
-		pR = 20;
-		pX = centerX + (int)(radius * Math.sin(rads));
-		pY = centerY - (int)(radius * Math.cos(rads));
-		g.setColor(Color.red);
-		g.fillRect(50+u, 50, 10, 10);
-		g.setFont(new Font("Arial", Font.BOLD, 10));
-		g2d.drawString("angle:"+ u, 70+u, 50);
-		Shape pointer= new Ellipse2D.Double(pX - pR, pY - pR, 2.0 * pR, 2.0 * pR);
-		g2d.draw(pointer);
-		g2d.draw(new Line2D.Double(centerX,centerY,pX,pY));
-		g.dispose();
+	super.paint(g);
+	//asd
+	Graphics2D g2d = (Graphics2D)g;
+	g.setColor(Color.white);
+	g.setFont(new Font("Arial", Font.BOLD, 40));
+	g2d.drawString("PSZT - Pret", 15, 40);
+	g.setFont(new Font("Arial", Font.BOLD, 10));
+	int centerX,centerY,radius ;
+	centerX= 450;
+	centerY = 280;
+	radius = 180;
+	Shape theCircle = new Ellipse2D.Double(centerX - radius, centerY - radius, 2.0 * radius, 2.0 * radius);
+	g2d.draw(theCircle);
+	double pX, pY,pR;
+	double rads ;
+	rads = Math.toRadians(pr.alfy[t]);
+	pR = 20;
+	pX = centerX + (int)(radius * Math.sin(rads));
+	pY = centerY - (int)(radius * Math.cos(rads));
+	g.setColor(Color.red);
+	g.setFont(new Font("Arial", Font.BOLD, 10));
+	Shape pointer= new Ellipse2D.Double(pX - pR, pY - pR, 2.0 * pR, 2.0 * pR);
+	g2d.draw(pointer);
+	g2d.draw(new Line2D.Double(centerX,centerY,pX,pY));
+
+	//Lines
+	g.setColor(Color.white);
+	g2d.draw(new Line2D.Double (0,50, 900,50));
+	g2d.draw(new Line2D.Double (200,50, 200,560));
+	g2d.draw(new Line2D.Double (700,50, 700,560));
+	g.setFont(new Font("Arial", Font.BOLD, 15));
+	//Left
+	g2d.drawString("Postêp symulacji:", 10, 70);
+	g2d.drawRect(10,90 , 180, 20);
+	g2d.fillRect(10,90 ,(int)(t*(180.0/999.0)) , 20);
+	g2d.drawString("probka:"+ t +" (" +(int)((t/999.0)*100.0) + " %)", 10, 140);
+	//angle
+	g.setColor(Color.red);
+	g2d.drawString("Angle:"+ pr.alfy[t], 210, 80);
+	g.dispose();
 	}
+
 	public void actionPerformed(ActionEvent e)
 	{
 		if (t >= 999) {t = 0; System.out.println(pr.ostatniWynik);} else t++;

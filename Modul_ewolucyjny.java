@@ -91,12 +91,12 @@ public class Modul_ewolucyjny {
 				}
 			}
 			fi = ny/kroki;
-			if (fi < (1/5))
+			if (fi < (1.0 / 5.0))
 			{
 				sigma = c1 * sigma;
 				//System.out.println("fi < 1/5");
 			}
-			else if(fi > (1/5))
+			else if(fi > (1.0 / 5.0))
 			{
 				sigma = c2 * sigma;
 				//System.out.println("fi > 1/5");
