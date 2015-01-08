@@ -29,14 +29,14 @@ public class Pret
 		{
 			double[] dane = {alfa, omega};
 			
-			epsilon = Math.sin(Math.toRadians(alfa));// + siecNeuronowa.obliczWartosc(dane);
+			epsilon = 10 * Math.sin(Math.toRadians(alfa));// + siecNeuronowa.obliczWartosc(dane);
 			
 			alfa = alfa + dt * omega + 0.5 * dt * dt * epsilon;
 			omega = omega + dt * epsilon;
 			
 			
-			while(alfa > 180)
-				alfa = 360 - alfa;
+			while(alfa > 360)
+				alfa = alfa - 360;
 			
 			sredniKat += Math.abs(alfa);
 			alfy[(int)(aktualnyCzas * 100)] = alfa;
